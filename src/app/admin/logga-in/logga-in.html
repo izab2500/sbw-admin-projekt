@@ -1,0 +1,35 @@
+<section>
+    <h1>Admin logga in</h1>
+    <form [formGroup]="adminForm" novalidate>
+        <div class="form-group">
+            <label for="email">E-post</label>
+            <input type="email" id="email" placeholder="Skriv din e-post address..." formControlName="email">
+            <div class="error-msg">
+                @if (adminForm.controls.email.touched && adminForm.controls.email.hasError('required')) {
+                E-post får inte vara tom
+                } @else if (adminForm.controls.email.touched && adminForm.controls.email.hasError('pattern')) {
+                Ogiltig e-postadress
+                }
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Lösenord</label>
+            <input type="password" id="password" name="email" placeholder="Skriv ditt lösenord..."
+                formControlName="password">
+            <div class="error-msg">
+                @if (adminForm.controls.password.touched && adminForm.controls.password.hasError('required')) {
+                Lösenord får inte vara tomt
+                }
+            </div>
+        </div>
+        <div class="forget">
+            <a href="#">Har du glömt lösenordet?</a>
+        </div>
+        <button (click)="login()" type="button" [disabled]="adminForm.invalid">Logga in</button>
+    </form>
+    <div class="response">
+        @if (responseMessage()) {
+        {{ responseMessage() }}
+        }
+    </div>
+</section>
