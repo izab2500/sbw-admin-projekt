@@ -1,15 +1,19 @@
 <section>
   <aside>
-    <h2>Admin</h2>
+    <div class="logo">
+      <p><span>In</span><span class="color-red">&</span><span>Out</span><span class="color-red">Sushi</span></p>
+    </div>
     <nav>
-      <a routerLink="dashboard">Dashboard</a>
-      <a routerLink="meny">Meny</a>
-      <a routerLink="meddelanden">Meddelanden</a>
-      <a routerLink="bestallningar">Beställningar</a>
+      <a routerLink="dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+      <a routerLink="meny" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Meny</a>
+      <a routerLink="meddelanden" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">Meddelanden</a>
+      <a routerLink="bestallningar" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">Beställningar</a>
     </nav>
+    <button type="button" (click)="logoutAdmin()">Logga ut</button>
   </aside>
   <main class="content">
     <router-outlet></router-outlet>
   </main>
-
 </section>
