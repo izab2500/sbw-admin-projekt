@@ -1,6 +1,7 @@
 import { Component, signal, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Auth } from '../../services/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logga-in',
@@ -11,6 +12,7 @@ import { Auth } from '../../services/auth';
 
 export class LoggaIn {
   private authService = inject(Auth);
+  private router = inject(Router);
 
   responseMessage = signal<string>("");
 
@@ -34,7 +36,8 @@ export class LoggaIn {
     this.authService.loginAdmin(payload).subscribe({
       next: (res: any) => {
         this.responseMessage.set(res.message);
-        this.adminForm.reset()
+        this.adminForm.reset();
+        this.router.navigateByUrl("/admin");
         setTimeout(() => {
           this.responseMessage.set("");
         }, 5000);
