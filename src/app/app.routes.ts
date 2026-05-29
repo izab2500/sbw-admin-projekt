@@ -6,6 +6,7 @@ import { Messages } from './admin/messages/messages';
 import { Menu } from './admin/menu/menu';
 import { Orders } from './admin/orders/orders';
 import { NotFound } from './not-found/not-found';
+import { authGuard } from './guard/auth-guard';
 
 export const routes: Routes = [
     {
@@ -23,26 +24,28 @@ export const routes: Routes = [
     {
         path: 'admin',
         component: Layout,
+        canActivateChild: [authGuard],
+
         children: [
             {
                 path: 'dashboard',
                 component: Dashboard,
-                title: 'Admin | Dashboard'
+                title: 'Admin | Dashboard',
             },
             {
                 path: 'meddelanden',
                 component: Messages,
-                title: 'Admin | Meddelanden'
+                title: 'Admin | Meddelanden',
             },
             {
                 path: 'meny',
                 component: Menu,
-                title: 'Admin | Meny'
+                title: 'Admin | Meny',
             },
             {
                 path: 'bestallningar',
                 component: Orders,
-                title: 'Admin | Beställningar'
+                title: 'Admin | Beställningar',
             },
             {
                 path: '',
