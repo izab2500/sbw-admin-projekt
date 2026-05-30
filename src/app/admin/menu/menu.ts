@@ -72,7 +72,6 @@ export class Menu {
 
   updateItem(): void {
     const id = this.selectedItemId();
-    console.log(id)
     if (!id) return;
     this.menuService.updateMenuItemById(id, this.menuForm.value as any).subscribe({
       next: () => {

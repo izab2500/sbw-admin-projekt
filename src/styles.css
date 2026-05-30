@@ -16,3 +16,11 @@ body {
     min-height: 100vh;
     margin-inline: auto;
 }
+
+app-root {
+    display: block;
+}
+
+main {
+    min-width:0;
+}
