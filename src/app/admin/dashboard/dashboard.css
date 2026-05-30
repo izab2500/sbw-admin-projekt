@@ -1,0 +1,44 @@
+.dashboard-header {
+margin: 32px auto;
+}
+
+.dashboard-header h2 {
+font-size: 2rem;
+margin-bottom: 4px;
+font-weight: 500;
+}
+
+.dashboard-header p {
+font-size: 1.5rem;
+color: rgb(102, 102, 102);
+}
+
+.stats-section h2 {
+font-size: 1.4rem;
+margin-bottom: 16px;
+}
+
+.stats-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 16px;
+}
+
+.card {
+background-color: white;
+border: 1px solid rgb(235, 235, 235);
+border-radius: 8px;
+padding: 20px;
+}
+
+.card h3 {
+font-size: 1.1rem;
+margin-bottom: 12px;
+color: rgb(85, 85, 85);
+}
+
+.card p {
+font-size: 2rem;
+font-weight: 700;
+color: navy;
+}
