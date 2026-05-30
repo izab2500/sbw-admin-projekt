@@ -1,1 +1,87 @@
-<p>menu works!</p>
+<section class="menu-form-section">
+    <h2>{{ isEditMode() ? "Uppdatera vara" : "Skapa vara" }}</h2>
+
+    <form [formGroup]="menuForm" (ngSubmit)="submit()" novalidate>
+
+        <div class="form-group">
+            <label>Bild</label>
+            <input formControlName="image" type="text" placeholder="Bildurl..." />
+
+            @if (menuForm.controls.image.touched && menuForm.controls.image.invalid) {
+                <div class="error">Fältet får inte lämnas tomt</div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label>Rubrik</label>
+            <input formControlName="heading" type="text" placeholder="Rubrik..." />
+
+            @if (menuForm.controls.heading.touched && menuForm.controls.heading.invalid) {
+                <div class="error">Fältet får inte lämnas tomt</div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label>Beskrivning</label>
+            <input formControlName="description" type="text" placeholder="Beskrivning..." />
+
+            @if (menuForm.controls.description.touched && menuForm.controls.description.invalid) {
+                <div class="error">Fältet får inte lämnas tomt</div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label>Pris</label>
+            <input formControlName="price" type="number" min="0" step="1" placeholder="Pris..." />
+
+            @if (menuForm.controls.price.touched && menuForm.controls.price.invalid) {
+                <div class="error">Pris måste vara större än 0</div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label>Kategori</label>
+            <select formControlName="category">
+                <option value="sushi">Sushi</option>
+                <option value="drinks">Dryck</option>
+            </select>
+
+            @if (menuForm.controls.category.touched && menuForm.controls.category.invalid) {
+                <div class="error">Välj kategori</div>
+            }
+        </div>
+
+        <button type="submit" [disabled]="menuForm.invalid">
+            {{ isEditMode() ? 'Uppdatera' : 'Skapa' }}
+        </button>
+
+        @if (isEditMode()) {
+            <button type="button" (click)="cancelEdit()">
+                Avbryt
+            </button>
+        }
+
+    </form>
+</section>
+
+<section class="menu-cards">
+    <h2>Meny</h2>
+
+    <div class="menu-grid">
+
+        @for (item of menuItems(); track item._id) {
+            <div class="card">
+                <h3>{{ item.heading }}</h3>
+                <p>{{ item.description }}</p>
+
+                <span class="price">{{ item.price }} kr</span>
+
+                <div class="actions">
+                    <button (click)="startEdit(item)">Uppdatera</button>
+                    <button (click)="deleteItem(item._id)">Radera</button>
+                </div>
+
+            </div>
+        }
+    </div>
+</section>
